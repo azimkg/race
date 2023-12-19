@@ -45,7 +45,7 @@ const LessonsTypeResult = () => {
       <NavbarLesson />
       {
         lesson === '5' ?
-          <TestResult accuracy={100 - (errorCount * 4) <= 0 ? 0 : 100 - (errorCount * 4)} time={Math.ceil(time / 60)} speed={40} title={'Тестовый урок'} text={letters} types='time' />
+          <TestResult accuracy={100 - (errorCount * 4) <= 0 ? 0 : 100 - (errorCount * 4)} time={60} speed={40} title={'Тестовый урок'} text={letters} types='time' />
           :
           <ResultLessons accuracy={100 - (errorCount * 4) <= 0 ? 0 : 100 - (errorCount * 4)} time={Math.ceil(time / 60)} speed={40} />
       }
