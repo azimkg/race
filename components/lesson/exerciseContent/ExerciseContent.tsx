@@ -2,7 +2,8 @@
 import { ReactElement, useEffect } from 'react';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { getStageExercise } from 'models/exercise/selectors/exerciseSelectors';
-import { StageExercise } from 'models/exercise/types/exerciseSchema';
+import { exerciseActions } from 'models/exercise/slice/exerciseSlice';
+import { StageExercise, StageTestExercise } from 'models/exercise/types/exerciseSchema';
 import { keyboardActions } from 'models/keyboard/slice/keyboardSlice';
 import { useSelector } from 'react-redux';
 import ExerciseDescription from '../exerciseDescription/ExerciseDescription';
@@ -21,6 +22,8 @@ const ExerciseContent = () => {
   useEffect(() => {
     return () => {
       dispatch(keyboardActions.setCurrentLetter(''));
+      dispatch(exerciseActions.setTestStage(StageTestExercise.START));
+      dispatch(exerciseActions.setStage(StageExercise.DESCRIPTION));
     };
   }, [dispatch]);
   const stage = useSelector(getStageExercise);

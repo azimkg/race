@@ -104,7 +104,6 @@ const TestResult: FC<TestResultProps> = (props) => {
     };
   }, []);
 
-
   return (
     <Container>
       <SmallContainer>
@@ -117,11 +116,13 @@ const TestResult: FC<TestResultProps> = (props) => {
                   <div key={wordIndex} className={classes(cls.line)}>
                     {word.split(' ').map((letter, letIndex) => {
                       const cumulativeIndex = wordIndex + letIndex;
+                      let isHas = false;
                       let isWordError = false;
                       letter.split('').forEach((_, idx) => {
                         if (errorIndexes.includes(resultidx)) {
                           isWordError = true;
                         }
+                        isHas = !isHas ? currentIndex > resultidx : isHas;
                         resultidx++;
                       });
                       resultidx++;
@@ -131,7 +132,7 @@ const TestResult: FC<TestResultProps> = (props) => {
                           className={classes(
                             cls.newletter_box,
                             { [cls.error]: isWordError },
-                            { [cls.every]: currentIndex < cumulativeIndex },
+                            { [cls.every]: !isHas },
                           )}
                         >
                           <p>{letter}&nbsp;</p>

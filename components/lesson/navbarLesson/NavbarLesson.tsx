@@ -33,8 +33,6 @@ const NavbarLesson = ({ title = 'xnj', children }: NavbarLessonProps) => {
   };
   const handleReturn = () => {
     const href = type === 'time' || type === 'word' ? `/${locale}/tests/${type}` : `/${locale}/lessons/${type}`;
-    dispatch(exerciseActions.setTestStage(StageTestExercise.START));
-    dispatch(exerciseActions.setStage(StageExercise.START));
     route.push(href);
     dispatch(keyboardActions.handleReset());
     dispatch(exerciseActions.updateTimer(0));
